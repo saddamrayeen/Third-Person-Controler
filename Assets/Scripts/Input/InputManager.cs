@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    PlayerAnimatorController animatorController;
+    float moveAmount;
     PlayerControls playerControls;
 
     public Vector2 movementInput;
     public float verticleInput,
         horizontlInput;
+
+    private void Awake()
+    {
+        animatorController = GetComponent<PlayerAnimatorController>();
+    }
 
     // when script is enable
     private void OnEnable()
@@ -31,6 +38,8 @@ public class InputManager : MonoBehaviour
     public void HandleAllInputs()
     {
         HandleMovementInput();
+        moveAmount = Mathf.Clamp01(Mathf.Abs(horizontlInput) + Mathf.Abs(verticleInput));
+        animatorController.UpdateAnimatorValues(0, moveAmount);
     }
 
     private void HandleMovementInput()
