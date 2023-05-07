@@ -7,8 +7,10 @@ public class InputManager : MonoBehaviour
     PlayerControls playerControls;
 
     public Vector2 movementInput;
-    public float verticleInput,horizontlInput;
+    public float verticleInput,
+        horizontlInput;
 
+    // when script is enable
     private void OnEnable()
     {
         if (playerControls == null)
@@ -25,7 +27,13 @@ public class InputManager : MonoBehaviour
         playerControls.Disable();
     }
 
-    public void HandleMovementInput()
+    // this method is for handling all processes
+    public void HandleAllInputs()
+    {
+        HandleMovementInput();
+    }
+
+    private void HandleMovementInput()
     {
         verticleInput = movementInput.y;
         horizontlInput = movementInput.x;
