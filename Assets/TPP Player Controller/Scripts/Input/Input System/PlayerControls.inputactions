@@ -1,5 +1,5 @@
 {
-    "name": "Player Controlls",
+    "name": "PlayerControls",
     "maps": [
         {
             "name": "Movement",
@@ -9,6 +9,15 @@
                     "name": "Move",
                     "type": "PassThrough",
                     "id": "7ec72ed9-0470-445f-8ee8-724b1fba7f41",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Camera",
+                    "type": "PassThrough",
+                    "id": "14f23c54-2be6-4c77-886c-a1ba27225565",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -70,6 +79,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "5bce7979-23d0-431c-b50b-18f5fb3de461",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

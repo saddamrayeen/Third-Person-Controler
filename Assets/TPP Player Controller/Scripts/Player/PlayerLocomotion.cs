@@ -16,10 +16,13 @@ public class PlayerLocomotion : MonoBehaviour
 
     Rigidbody myBody;
 
+    Transform cameraObject;
+
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
         myBody = GetComponent<Rigidbody>();
+        cameraObject = Camera.main.transform;
     }
 
     // this method is for handling all processes
@@ -33,8 +36,8 @@ public class PlayerLocomotion : MonoBehaviour
     private void MovePlayer()
     {
         // getting axis valus from input manager to move the player
-        moveDirection.z = inputManager.verticleInput;
-        moveDirection.x = inputManager.horizontlInput;
+        moveDirection = cameraObject.forward *  inputManager.verticleInput;
+        moveDirection +=  cameraObject.right* inputManager.horizontlInput;
         moveDirection.Normalize();
         moveDirection.y = 0;
         moveDirection *= moveSpeed;
@@ -49,8 +52,8 @@ public class PlayerLocomotion : MonoBehaviour
     {
         Vector3 rotationDirection = new Vector3();
 
-        rotationDirection.z = inputManager.verticleInput;
-        rotationDirection.x = inputManager.horizontlInput;
+        rotationDirection = cameraObject.forward * inputManager.verticleInput;
+        rotationDirection += cameraObject.right * inputManager.horizontlInput;
 
         rotationDirection.Normalize();
         rotationDirection.y = 0;
